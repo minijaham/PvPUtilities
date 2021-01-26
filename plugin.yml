@@ -2,7 +2,7 @@
 name: PvPUtilities
 author: minijaham
 website: "https://github.com/minijaham"
-version: 0.0.1
+version: 1.0.1
 main: minijaham\PvPUtilities\Main
 api: 3.17.2
 description: "Bruh moment plugin for combo and reach calculation"
