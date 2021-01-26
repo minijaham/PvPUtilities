@@ -8,16 +8,11 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
 use pocketmine\Server;
 use pocketmine\plugin\Plugin;
-use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
-use pocketmine\command\ConsoleCommandSender;
 use pocketmine\utils\Config;
-use pocketmine\utils\TextFormat as C;
 use pocketmine\event\Listener;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\player\PlayerJoinEvent;
-use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerDeathEvent;
 
 class Main extends PluginBase implements Listener
@@ -37,23 +32,8 @@ class Main extends PluginBase implements Listener
     public function onJoin(PlayerJoinEvent $event)
     {
         $player = $event->getPlayer();
-        /* If player has played before */
-        if (!$player->hasPlayedBefore())
-        {
-            /* Register Player */
-            $this->db->set($player->getName(), 0);
-        }
-    }
-    
-    public function onQuit(PlayerQuitEvent $event)
-    {
-        $player = $event->getPlayer();
-        /* If player has more than 0 combos */
-        if ($this->db->get($player->getName()) >= 1)
-        {
-            /* Reset combo on quit */
-            $this->db->set($player->getName(), 0);
-        }
+        /* Register Player */
+        $this->db->set($player->getName(), 0);
     }
     
     public function onPlayerDeath(PlayerDeathEvent $event)
