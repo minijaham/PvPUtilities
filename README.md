@@ -1,2 +1,7 @@
 # PvPUtilities
-A simple, laggy and broken combo / reach calculator. This is just a simple/spot on idea I had, it will definitely lag your server so I don't recommend using this. 
+A simple, laggy and broken combo / reach calculator!
+
+This was a spot-on idea, which means this is not the best way to result the same.
+
+# NOT RECOMMENDED FOR PRODUCTION
+This plugin may cause lags. Not recommended for a production server.
