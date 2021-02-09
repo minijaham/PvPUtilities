@@ -24,13 +24,17 @@ class Main extends PluginBase implements Listener
     private $clicks;
     
     public $db;
+
+    public $config
     
     public function onEnable()
     {
         /* Resources */
         @mkdir($this->getDataFolder());
         $this->saveResource("db.yml");
+        $this->saveResource("config.yml");
         $this->db = new Config($this->getDataFolder() . "db.yml", Config::YAML);
+        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
         /* Event */
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
@@ -105,7 +109,8 @@ class Main extends PluginBase implements Listener
             $this->db->set($damager->getName(), $this->db->get($damager->getName()) + 1);
             $this->db->set($entity->getName(), 0);
             
-            $damager->sendTip("CPS: ".$this->getCps($damager)." | Combo: ".$this->db->get($damager->getName())." | Reach: ".round($damager->distance($entity))); // Count for combo / reach
+            $damager->sendTip(["{cps}", "combo", "reach"], [$this->getCps($damager), $this->db->get($damager->getName()), round($damager->distance($entity))], $this->["display"]);
+	    // $damager->sendTip("CPS: ".$this->getCps($damager)." | Combo: ".$this->db->get($damager->getName())." | Reach: ".round($damager->distance($entity))); // Count for combo / reach
         }
     }
 }
