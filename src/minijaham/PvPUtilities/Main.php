@@ -109,7 +109,7 @@ class Main extends PluginBase implements Listener
             $this->db->set($damager->getName(), $this->db->get($damager->getName()) + 1);
             $this->db->set($entity->getName(), 0);
             
-            $damager->sendTip(["{cps}", "combo", "reach"], [$this->getCps($damager), $this->db->get($damager->getName()), round($damager->distance($entity))], $this->["display"]);
+            $damager->sendTip(["{cps}", "{combo}", "{reach}"], [$this->getCps($damager), $this->db->get($damager->getName()), round($damager->distance($entity))], $this->config["display"]);
 	    // $damager->sendTip("CPS: ".$this->getCps($damager)." | Combo: ".$this->db->get($damager->getName())." | Reach: ".round($damager->distance($entity))); // Count for combo / reach
         }
     }
