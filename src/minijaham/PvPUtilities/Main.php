@@ -25,7 +25,7 @@ class Main extends PluginBase implements Listener
     
     public $db;
 
-    public $config
+    public $config;
     
     public function onEnable()
     {
